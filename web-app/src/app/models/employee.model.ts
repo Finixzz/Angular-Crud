@@ -4,9 +4,9 @@ export class Employee{
     gender: string;
     email?: string;
     phoneNumber?: number;
-    contractPreference: string;
+    contactPreference: string;
     dateOfBirth: Date;
     department: string;
-    isActibe: boolean;
+    isActive: boolean;
     photoPath?: string;
 }
