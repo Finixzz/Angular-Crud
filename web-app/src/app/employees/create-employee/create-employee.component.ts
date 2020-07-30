@@ -4,12 +4,15 @@ import {NgForm} from "@angular/forms";
 import {Employee} from 'src/app/models/employee.model';
 import {Department} from 'src/app/models/depatment.model';
 
+import { BsDaterangepickerConfig } from 'ngx-bootstrap/datepicker';
+
 @Component({
   selector: 'app-create-employee',
   templateUrl: './create-employee.component.html',
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+  datePickerConfig: Partial<BsDaterangepickerConfig>;
   empModel : Employee;
   departments: Department[]=[
       new Department(1,'Help Desk'),
@@ -20,6 +23,12 @@ export class CreateEmployeeComponent implements OnInit {
   ]
   constructor() {
         this.empModel=new Employee();
+        this.datePickerConfig=Object.assign({},
+            {
+                containerClass:"theme-dark-blue",
+                showWeekNumbers: false,
+                dateInputFormat:"DD/MM/YYYY"
+            });
    }
 
   ngOnInit(): void {
