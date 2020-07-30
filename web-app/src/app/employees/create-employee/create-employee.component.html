@@ -6,11 +6,58 @@
         <div class="panel-body">
             <div class="form-group">
                 <label for="fullName">Full name</label>
-                <input id="fullName" name="fullName" [ngModel]="fullName" type="text" class="form-control" autocomplete="off" >
+                <input id="fullName" name="fullName" [(ngModel)]="empModel.name"  type="text" class="form-control" autocomplete="off" >
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input id="email" name="email" [(ngModel)]="email"  type="text" class="form-control" autocomplete="off" >
+                <input id="email" name="email" [(ngModel)]="empModel.email"   type="text" class="form-control" autocomplete="off" >
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Phone number</label>
+                <input id="phoneNumber" name="phoneNumber" [(ngModel)]="empModel.phoneNumber"   type="text" class="form-control" autocomplete="off" >
+            </div>
+            <div class="form-group">
+                <label>Contact Preference</label>
+                <div class="form-control">
+                  <label class="radio-inline">
+                    <input type="radio" name="contactPreference" value="email"
+                    [(ngModel)]="empModel.contactPreference">
+                    Email
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="contactPreference" value="phone" 
+                    [(ngModel)]="empModel.contactPreference">
+                    Phone
+                  </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="form-control">
+                    <label class="radio-inline">
+                        <input type="radio" value="male" name="gender" [(ngModel)]="empModel.gender">
+                        Male
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" value="female" name="gender" [(ngModel)]="empModel.gender">
+                        Female
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-control">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="isActive" [(ngModel)]="empModel.isActive">
+                        Is Active
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select class="form-control" id="department"  name="department" [(ngModel)]="empModel.department">
+                    <option value="">Select department</option>
+                    <option *ngFor="let dep of departments" [value]="dep.id">{{dep.name}}</option>
+                </select>
             </div>
         </div>
         <div class="panel-footer">
@@ -20,3 +67,5 @@
 </form>
 
 Angular Generated Form Model : {{employeeForm.value | json}}
+
+{{empModel.name}}
