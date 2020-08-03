@@ -1,4 +1,5 @@
 
+import {Department} from "src/app/models/depatment.model";
 
 export class Employee{
     id: number;
