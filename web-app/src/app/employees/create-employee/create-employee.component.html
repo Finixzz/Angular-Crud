@@ -4,18 +4,32 @@
             <h3 class="panel-title">Create Employee</h3>
         </div>
         <div class="panel-body">
-            <div class="form-group">
-                <label for="fullName">Full name</label>
-                <input id="fullName" name="fullName" [(ngModel)]="empModel.name"  type="text" class="form-control" autocomplete="off" >
+
+            <div class="form-group" [class.has-error]="fullNameControl.invalid && fullNameControl.touched" 
+                                    [class.has-success]="fullNameControl.valid">
+                <label for="fullName" class="control-label">Full name</label>
+                <input id="fullName" name="fullName"  type="text" class="form-control"
+                       autocomplete="off" required [(ngModel)]="empModel.fullName" #fullNameControl="ngModel" >
+                <span *ngIf="fullNameControl.invalid && fullNameControl.touched" class="help-block">Full name is required</span>
+
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input id="email" name="email" [(ngModel)]="empModel.email"   type="text" class="form-control" autocomplete="off" >
+
+            <div class="form-group" [class.has-error]="emailControl.invalid && emailControl.touched"
+                                    [class.has-success]="emailControl.valid">
+                <label for="email" class="control-label">Email</label>
+                <input id="email" email name="email" [(ngModel)]="empModel.email"   type="text" class="form-control" autocomplete="off"
+                required [(ngModel)]="empModel.email" #emailControl="ngModel" >
+                <span *ngIf="emailControl.invalid && emailControl.touched && (empModel.email=='' || empModel.email==null)"
+                       class="help-block">Email is required</span>
+                <span *ngIf="emailControl.invalid && emailControl.touched && (empModel.email!=null && empModel.email!='')"
+                       class="help-block">Email is not valid</span>
             </div>
+
             <div class="form-group">
                 <label for="phoneNumber">Phone number</label>
                 <input id="phoneNumber" name="phoneNumber" [(ngModel)]="empModel.phoneNumber"   type="text" class="form-control" autocomplete="off" >
             </div>
+
             <div class="form-group">
                 <label>Contact Preference</label>
                 <div class="form-control">
@@ -31,6 +45,7 @@
                   </label>
                 </div>
             </div>
+
             <div class="form-group">
                 <label>Gender</label>
                 <div class="form-control">
@@ -44,6 +59,7 @@
                     </label>
                 </div>
             </div>
+
             <div class="form-group">
                 <div class="form-control">
                     <label class="checkbox-inline">
@@ -52,6 +68,7 @@
                     </label>
                 </div>
             </div>
+
             <div class="form-group">
                 <label for="department">Department</label>
                 <select class="form-control" id="department"  name="department" [(ngModel)]="empModel.department">
@@ -59,13 +76,37 @@
                     <option *ngFor="let dep of departments" [value]="dep.id">{{dep.name}}</option>
                 </select>
             </div>
+
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label for="dateOfBirth">Date of birth</label>
+                    <input id="dateOfBirth" name="dateOfBirth" [(ngModel)]="empModel.dateOfBirth" bsDatepicker [bsConfig]="datePickerConfig"  type="text" class="form-control" autocomplete="off" placement="right" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="photoPath">Photo path</label>
+                <input id="photoPath" name="photoPath" [(ngModel)]="empModel.photoPath" [disabled]="preview" type="text" class="form-control">
+                <div *ngIf="!preview; else showPreview" class="form-group">
+                    <button (click)="togglePhotoPreview()" type="button" class="btn btn-primary">Show preview</button>
+                </div>
+                <ng-template #showPreview >
+                    <button (click)="togglePhotoPreview()" type="button"  class="btn btn-primary">Hide preview</button>
+                    <br>
+                    <br>
+                    <img [src]="empModel.photoPath" height="200" width="200" class="center">
+                </ng-template>
+            </div>
         </div>
+
         <div class="panel-footer">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary" [disabled]="employeeForm.invalid">Save</button>
         </div>
     </div>    
 </form>
 
 Angular Generated Form Model : {{employeeForm.value | json}}
+<br><br>
+Employee Model: {{empModel |json}}
+<br>
 
-{{empModel.name}}

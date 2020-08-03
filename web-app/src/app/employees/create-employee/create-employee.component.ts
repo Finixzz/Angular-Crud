@@ -12,6 +12,7 @@ import { BsDaterangepickerConfig } from 'ngx-bootstrap/datepicker';
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
+  preview: boolean;
   datePickerConfig: Partial<BsDaterangepickerConfig>;
   empModel : Employee;
   departments: Department[]=[
@@ -29,6 +30,12 @@ export class CreateEmployeeComponent implements OnInit {
                 showWeekNumbers: false,
                 dateInputFormat:"DD/MM/YYYY"
             });
+        this.preview=false;
+   }
+
+   togglePhotoPreview(){
+       if(this.empModel.photoPath!="" && this.empModel.photoPath!=null)
+            this.preview=!this.preview;
    }
 
   ngOnInit(): void {
@@ -37,5 +44,7 @@ export class CreateEmployeeComponent implements OnInit {
   saveEmployee(empForm: NgForm): void{
       console.log(this.empModel);
   }
+
+  
 
 }
