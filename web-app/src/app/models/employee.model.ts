@@ -12,6 +12,8 @@ export class Employee{
     department: string;
     isActive: boolean;
     photoPath?: string;
+    password:string;
+    confirmPassword:string;
 
     /**
      *
@@ -27,6 +29,8 @@ export class Employee{
         this.department=null;
         this.isActive=null;
         this.photoPath=null;
+        this.password=null;
+        this.confirmPassword=null;
 
     }
 }

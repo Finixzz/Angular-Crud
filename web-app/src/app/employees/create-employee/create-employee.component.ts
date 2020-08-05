@@ -22,6 +22,7 @@ export class CreateEmployeeComponent implements OnInit {
       new Department(4,"Payroll"),
       new Department(5,"Admin")
   ]
+
   constructor() {
         this.empModel=new Employee();
         this.datePickerConfig=Object.assign({},
