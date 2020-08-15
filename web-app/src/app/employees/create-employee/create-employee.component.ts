@@ -16,8 +16,8 @@ import {Router} from "@angular/router";
   styleUrls: ['./create-employee.component.css']
 })
 export class CreateEmployeeComponent implements OnInit {
-
-
+  @ViewChild("employeeForm") public createEmployeeForm: NgForm;
+  
   preview: boolean;
   datePickerConfig: Partial<BsDaterangepickerConfig>;
   empModel : Employee;
