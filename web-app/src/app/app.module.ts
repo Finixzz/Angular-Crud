@@ -11,6 +11,8 @@ import { ListEmployeesComponent } from './employees/list-employees/list-employee
 import { CreateEmployeeComponent } from './employees/create-employee/create-employee.component';
 
 
+import {EmployeeService} from "../app/employees/employee.service";
+
 const appRoutes: Routes=[
     {path: 'list',component:ListEmployeesComponent},
     {path: 'create', component:CreateEmployeeComponent},
@@ -30,7 +32,7 @@ const appRoutes: Routes=[
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

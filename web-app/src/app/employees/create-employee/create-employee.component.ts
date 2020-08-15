@@ -5,6 +5,10 @@ import {Employee} from 'src/app/models/employee.model';
 import {Department} from 'src/app/models/depatment.model';
 
 import { BsDaterangepickerConfig } from 'ngx-bootstrap/datepicker';
+import { EmployeeService } from '../employee.service';
+
+import {Router} from "@angular/router";
+
 
 @Component({
   selector: 'app-create-employee',
@@ -23,7 +27,8 @@ export class CreateEmployeeComponent implements OnInit {
       new Department(5,"Admin")
   ]
 
-  constructor() {
+  constructor(private _employeeService: EmployeeService,
+              private _router: Router) {
         this.empModel=new Employee();
         this.datePickerConfig=Object.assign({},
             {
@@ -40,10 +45,12 @@ export class CreateEmployeeComponent implements OnInit {
    }
 
   ngOnInit(): void {
+
   }
 
-  saveEmployee(empForm: NgForm): void{
-      console.log(this.empModel);
+  saveEmployee(): void{
+      this._employeeService.saveEmployee(this.empModel);
+      this._router.navigate(["list"]);
   }
 
   
