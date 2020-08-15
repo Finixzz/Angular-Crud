@@ -14,9 +14,14 @@ import { CreateEmployeeComponent } from './employees/create-employee/create-empl
 import {EmployeeService} from "../app/employees/employee.service";
 import { DisplayEmployeeComponent } from './employees/display-employee/display-employee.component';
 
+import {CreateEmployeeCanDeactivateGuardService} from "../app/employees/create-employee-can-deactivate-guard.service"
+
 const appRoutes: Routes=[
     {path: 'list',component:ListEmployeesComponent},
-    {path: 'create', component:CreateEmployeeComponent},
+    {path: 'create',
+     component:CreateEmployeeComponent,
+     canDeactivate: [CreateEmployeeCanDeactivateGuardService]
+    },
     {path: '', redirectTo:"/list", pathMatch:"full"}
 ];
 
@@ -34,7 +39,7 @@ const appRoutes: Routes=[
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EmployeeService],
+  providers: [EmployeeService,CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
