@@ -4,6 +4,7 @@ import {Employee} from 'src/app/models/employee.model';
 
 import {EmployeeService } from "../employee.service";
 
+import { Router} from "@angular/router";
 @Component({
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
@@ -12,12 +13,17 @@ import {EmployeeService } from "../employee.service";
 export class ListEmployeesComponent implements OnInit {
   employees: Employee[];
 
-  constructor(private _employeeService: EmployeeService) { 
+  constructor(private _employeeService: EmployeeService,private _router: Router) { 
   }
 
   ngOnInit(): void {
       this.employees=this._employeeService.getEmployees();
 
+  }
+
+  onClickRedirect(id:number){
+    let route="employees/"+id;
+    this._router.navigate([route]);
   }
 
 }

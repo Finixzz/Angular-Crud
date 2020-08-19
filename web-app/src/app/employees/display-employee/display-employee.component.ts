@@ -1,6 +1,6 @@
 import { Component, OnInit, Input} from '@angular/core';
 import { Employee } from 'src/app/models/employee.model';
-
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-display-employee',
   templateUrl: './display-employee.component.html',
@@ -12,5 +12,7 @@ export class DisplayEmployeeComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+
 
 }

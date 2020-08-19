@@ -14,7 +14,8 @@ import { CreateEmployeeComponent } from './employees/create-employee/create-empl
 import {EmployeeService} from "../app/employees/employee.service";
 import { DisplayEmployeeComponent } from './employees/display-employee/display-employee.component';
 
-import {CreateEmployeeCanDeactivateGuardService} from "../app/employees/create-employee-can-deactivate-guard.service"
+import {CreateEmployeeCanDeactivateGuardService} from "../app/employees/create-employee-can-deactivate-guard.service";
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component'
 
 const appRoutes: Routes=[
     {path: 'list',component:ListEmployeesComponent},
@@ -22,7 +23,8 @@ const appRoutes: Routes=[
      component:CreateEmployeeComponent,
      canDeactivate: [CreateEmployeeCanDeactivateGuardService]
     },
-    {path: '', redirectTo:"/list", pathMatch:"full"}
+    {path: '', redirectTo:"/list", pathMatch:"full"},
+    {path: "employees/:id",component: EmployeeDetailsComponent}
 ];
 
 @NgModule({
@@ -30,7 +32,8 @@ const appRoutes: Routes=[
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,
