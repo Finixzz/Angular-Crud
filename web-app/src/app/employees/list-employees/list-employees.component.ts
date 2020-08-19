@@ -18,7 +18,7 @@ export class ListEmployeesComponent implements OnInit {
 
   ngOnInit(): void {
       this.employees=this._employeeService.getEmployees();
-
+      console.log(this.employees);
   }
 
   onClickRedirect(id:number){
