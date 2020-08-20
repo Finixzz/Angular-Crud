@@ -17,6 +17,11 @@ import { DisplayEmployeeComponent } from './employees/display-employee/display-e
 import {CreateEmployeeCanDeactivateGuardService} from "../app/employees/create-employee-can-deactivate-guard.service";
 import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component'
 
+import { PipesModule } from "./Pipes/pipes.module"
+
+
+
+
 const appRoutes: Routes=[
     {path: 'list',component:ListEmployeesComponent},
     {path: 'create',
@@ -32,17 +37,17 @@ const appRoutes: Routes=[
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-    DisplayEmployeeComponent,
-    EmployeeDetailsComponent
+    DisplayEmployeeComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    PipesModule
   ],
   providers: [EmployeeService,CreateEmployeeCanDeactivateGuardService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

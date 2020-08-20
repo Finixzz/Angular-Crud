@@ -1,4 +1,8 @@
-<div *ngFor="let employee of employees">
+<div class="form-group">
+    <input type="text" class="form-control" placeholder="Search By Name" style="widows: 300px;"
+    [(ngModel)]="searchTerm">
+</div>
+<div *ngFor="let employee of employees | employeeFilter:searchTerm">
     <div (click)="onClickRedirect(employee.id)" class="pointer-cursor">
         <app-display-employee [employee]="employee" ></app-display-employee>
     </div>
