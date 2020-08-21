@@ -46,7 +46,7 @@ const appRoutes: Routes=[
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    //PipesModule
+    PipesModule
   ],
   providers: [EmployeeService,CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent],
