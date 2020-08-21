@@ -15,7 +15,7 @@ import {EmployeeService} from "../app/employees/employee.service";
 import { DisplayEmployeeComponent } from './employees/display-employee/display-employee.component';
 
 import {CreateEmployeeCanDeactivateGuardService} from "../app/employees/create-employee-can-deactivate-guard.service";
-import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component'
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
 
 import { PipesModule } from "./Pipes/pipes.module"
 
@@ -37,7 +37,8 @@ const appRoutes: Routes=[
     AppComponent,
     ListEmployeesComponent,
     CreateEmployeeComponent,
-    DisplayEmployeeComponent
+    DisplayEmployeeComponent,
+    EmployeeDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +46,7 @@ const appRoutes: Routes=[
     BsDatepickerModule.forRoot(),
     BrowserAnimationsModule,
     RouterModule.forRoot(appRoutes),
-    PipesModule
+    //PipesModule
   ],
   providers: [EmployeeService,CreateEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent],
