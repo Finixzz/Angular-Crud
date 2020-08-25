@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 import {Employee} from 'src/app/models/employee.model';
 
-import {EmployeeService } from "../employee.service";
-
 import { Router, ActivatedRoute} from "@angular/router";
+
+
 @Component({
   selector: 'app-list-employees',
   templateUrl: './list-employees.component.html',
@@ -15,14 +15,14 @@ export class ListEmployeesComponent implements OnInit {
   private filteredEmployees: Employee[];
   searchTerm: string="";
   counter: number=0;
-  constructor(private _employeeService: EmployeeService,private _router: Router,private _route: ActivatedRoute) { 
+  constructor(private _router: Router,private _route: ActivatedRoute) { 
+      this.employees=this._route.snapshot.data["employeeList"];
+      if(this._route.snapshot.queryParamMap.has("searchTerm")){
+            this.searchTerm=this._route.snapshot.queryParamMap.get("searchTerm").toString();
+        }
   }
 
   ngOnInit(): void {
-      this.employees=this._employeeService.getEmployees();
-      if(this._route.snapshot.queryParamMap.has("searchTerm")){
-          this.searchTerm=this._route.snapshot.queryParamMap.get("searchTerm").toString();
-      }
   }
 
   onClickRedirect(id:number){

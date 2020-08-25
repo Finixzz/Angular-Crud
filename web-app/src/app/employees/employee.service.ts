@@ -1,6 +1,10 @@
 import {Injectable} from "@angular/core";
 import {Employee} from "../models/employee.model";
 
+import { from, of, Observable } from 'rxjs';
+import { delay } from 'rxjs/internal/operators';
+import { concatMap } from 'rxjs/internal/operators';
+
 @Injectable()
 export class EmployeeService{
     private listEmployees: Employee[]= [
@@ -45,8 +49,8 @@ export class EmployeeService{
           },
       ];
 
-    getEmployees(): Employee[]{
-        return this.listEmployees;
+    getEmployees(): Observable<Employee[]>{
+        return of(this.listEmployees).pipe(delay(2000));
     }
     getEmployee(id: number):Employee{
         return this.listEmployees.find(e=>e.id === id);

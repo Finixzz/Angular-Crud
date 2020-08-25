@@ -20,7 +20,10 @@ export class EmployeeDetailsComponent implements OnInit {
          this._id=+params.get("id");
          this.employee=this._employeeService.getEmployee(this._id);
      })
-     this._employeeCount=this._employeeService.getEmployees().length+1;
+
+     this._employeeService.getEmployees().subscribe(empList=>{
+         this._employeeCount=empList.length+1;
+     })
   }
 
   viewNextEmployee(){
