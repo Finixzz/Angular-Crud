@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-default">
     <ul class="nav navbar-nav">
         <li>
@@ -8,6 +9,9 @@
         </li>
     </ul>
 </nav>
+<div *ngIf="showLoadingIndicator" class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
 <div class="container">
     <router-outlet></router-outlet>
 </div>
+
+    
