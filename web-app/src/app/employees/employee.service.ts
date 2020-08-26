@@ -60,5 +60,9 @@ export class EmployeeService{
         
     }
 
+    countEmployees() : number{
+        return this.listEmployees.length;
+    }
+
 
 }

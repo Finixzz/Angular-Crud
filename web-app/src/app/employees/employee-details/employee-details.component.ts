@@ -10,7 +10,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 })
 export class EmployeeDetailsComponent implements OnInit {
   private _id:number;
-  private _employeeCount;
+  private _employeeCount:number;
   employee: Employee;
   constructor(private _employeeService: EmployeeService,private _route: ActivatedRoute,private _router: Router) {
   }
@@ -20,10 +20,8 @@ export class EmployeeDetailsComponent implements OnInit {
          this._id=+params.get("id");
          this.employee=this._employeeService.getEmployee(this._id);
      })
-
-     this._employeeService.getEmployees().subscribe(empList=>{
-         this._employeeCount=empList.length+1;
-     })
+     
+     this._employeeCount=this._employeeService.countEmployees()+1;
   }
 
   viewNextEmployee(){

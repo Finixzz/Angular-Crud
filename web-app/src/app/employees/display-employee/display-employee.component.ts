@@ -8,11 +8,19 @@ import {Router} from "@angular/router";
 })
 export class DisplayEmployeeComponent implements OnInit {
   @Input() employee: Employee;
-  constructor() { }
+  @Input() searchTerm: string;
+  constructor(private _router: Router) { }
+
+  
 
   ngOnInit(): void {
   }
 
+  viewEmployee(){
+      this._router.navigate(["/employees",this.employee.id],{
+          queryParams: {"searchTerm": this.searchTerm}
+      });
+  }
 
 
 }
