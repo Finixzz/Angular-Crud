@@ -59,7 +59,17 @@ export class EmployeeService{
         this.listEmployees.push(employee);
         
     }
+    editEmployee(employee: Employee) : Employee{
+        let empInDb=this.getEmployee(employee.id);
+        empInDb=employee;
+        return empInDb;
+    }
 
+    deleteEmployee(id: number): void{
+        let employee=this.getEmployee(id);
+        let employeeIndex=this.listEmployees.indexOf(employee);
+        this.listEmployees.splice(employeeIndex,1);
+    }
     countEmployees() : number{
         return this.listEmployees.length;
     }

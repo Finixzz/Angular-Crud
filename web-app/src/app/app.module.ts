@@ -24,6 +24,7 @@ import { EmployeeListResolverService } from "./employees/employee-list-resolver.
 import { PageNotFoundComponent } from "./page-not-found.component";
 
 import { EmployeeDetailsGuardService } from "./employees/employee-details-guard.service";
+import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
 
 const appRoutes: Routes=[
     {
@@ -49,6 +50,11 @@ const appRoutes: Routes=[
     {
         path: "notfound",
         component: PageNotFoundComponent
+    },
+    {
+        path:"employees/edit/:id",
+        component: EditEmployeeComponent,
+        canActivate: [EmployeeDetailsGuardService]
     }
     
 ];
@@ -60,7 +66,8 @@ const appRoutes: Routes=[
     CreateEmployeeComponent,
     DisplayEmployeeComponent,
     EmployeeDetailsComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EditEmployeeComponent
   ],
   imports: [
     BrowserModule,
