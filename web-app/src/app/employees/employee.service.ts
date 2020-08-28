@@ -56,12 +56,23 @@ export class EmployeeService{
         return this.listEmployees.find(e=>e.id === id);
     }
     saveEmployee(employee: Employee){
+        employee.id=+this.listEmployees.length+1;
         this.listEmployees.push(employee);
         
     }
     editEmployee(employee: Employee) : Employee{
         let empInDb=this.getEmployee(employee.id);
-        empInDb=employee;
+        empInDb.fullName=employee.fullName;
+        empInDb.email=employee.email;
+        empInDb.department=employee.department;
+        empInDb.gender=employee.gender;
+        empInDb.contactPreference=employee.contactPreference;
+        empInDb.phoneNumber=employee.phoneNumber;
+        empInDb.isActive=employee.isActive;
+        empInDb.password=employee.password;
+        empInDb.confirmPassword=employee.confirmPassword;
+        empInDb.photoPath=employee.photoPath;
+        empInDb.dateOfBirth=employee.dateOfBirth;
         return empInDb;
     }
 

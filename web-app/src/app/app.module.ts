@@ -25,6 +25,7 @@ import { PageNotFoundComponent } from "./page-not-found.component";
 
 import { EmployeeDetailsGuardService } from "./employees/employee-details-guard.service";
 import { EditEmployeeComponent } from './employees/edit-employee/edit-employee.component';
+import { EditEmployeeCanDeactivateGuardService } from "./employees/edit-employee-can-deactivate-guard.service";
 
 const appRoutes: Routes=[
     {
@@ -54,7 +55,8 @@ const appRoutes: Routes=[
     {
         path:"employees/edit/:id",
         component: EditEmployeeComponent,
-        canActivate: [EmployeeDetailsGuardService]
+        canActivate: [EmployeeDetailsGuardService],
+        canDeactivate: [EditEmployeeCanDeactivateGuardService]
     }
     
 ];
@@ -77,7 +79,7 @@ const appRoutes: Routes=[
     RouterModule.forRoot(appRoutes),
     PipesModule
   ],
-  providers: [EmployeeService,CreateEmployeeCanDeactivateGuardService,EmployeeListResolverService,EmployeeDetailsGuardService],
+  providers: [EmployeeService,CreateEmployeeCanDeactivateGuardService,EmployeeListResolverService,EmployeeDetailsGuardService,EditEmployeeCanDeactivateGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
